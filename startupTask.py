@@ -1,10 +1,9 @@
 import http.server
 import threading
-from time import sleep
+from time import sleep, time
 from weather import weather
 from createPage import createPage
 from datetime import datetime
-import time
 
 jfc = weather()
 out = createPage(jfc)
@@ -32,7 +31,7 @@ httpd_thread.start()
 while True:
    sleep(60)
    # update the page at the top of the hour
-   if ( datetime.fromtimestamp(time.time()).minute == 1 ):
+   if ( datetime.fromtimestamp(time()).minute == 1 ):
       jfc = weather()
       out = createPage(jfc)
 
