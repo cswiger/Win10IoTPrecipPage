@@ -1,4 +1,3 @@
-from json import loads
 from datetime import datetime
 
 def createPage(jfc):
