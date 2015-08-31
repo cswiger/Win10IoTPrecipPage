@@ -20,7 +20,7 @@ class TestRequestHandler(http.server.BaseHTTPRequestHandler):
         self.wfile.write(out)
 
 
-httpd = http.server.HTTPServer(("", 8000), TestRequestHandler)
+httpd = http.server.HTTPServer(("", 80), TestRequestHandler)
 print('Started web server on port %d' % httpd.server_address[1])
 
 httpd_thread = threading.Thread(target=httpd.serve_forever)
