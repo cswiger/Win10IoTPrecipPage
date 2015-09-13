@@ -216,10 +216,18 @@ def manual():
     # the ON manual button was pressed
     print("Manual override button pressed")
     gpio.output(valve_pin, gpio.LOW)
+    # post ON time to Azure Queue
+    postdata = {'ON':''}
+    postdata['ON'] = time.time()
+    print(postazq.postazq(postdata))
     while (gWateringStatus == True):
       updateSched()
       sleep(1)
     gpio.output(valve_pin, gpio.HIGH)
+    # post OFF time to Azure Queue
+    postdata = {'OFF':''}
+    postdata['OFF'] = now
+    print(postazq.postazq(postdata))
 
 def loop():
   global schedule,table,gPostVars
