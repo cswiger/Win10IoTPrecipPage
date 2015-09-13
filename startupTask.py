@@ -226,7 +226,7 @@ def manual():
     gpio.output(valve_pin, gpio.HIGH)
     # post OFF time to Azure Queue
     postdata = {'OFF':''}
-    postdata['OFF'] = now
+    postdata['OFF'] = time.time()
     print(postazq.postazq(postdata))
 
 def loop():
