@@ -115,7 +115,7 @@ class RequestHandler(BaseHTTPRequestHandler):
 
 
 # run the webserver in a background thread with access to global variables
-httpd = http.server.HTTPServer(("", 8800), RequestHandler)
+httpd = http.server.HTTPServer(("", 80), RequestHandler)
 httpd_thread = threading.Thread(target=httpd.serve_forever)
 httpd_thread.setDaemon(True)
 httpd_thread.start()
